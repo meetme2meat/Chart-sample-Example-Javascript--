@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+    <title>JS Chart</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="sparkline.js"></script>
+    <script type="text/javascript" src="jquery.fancybox.js" > </script>
+    <script type="text/javascript" src="jquery.easing.js"> </script> 
+    <script type="text/javascript" src="jquery.mousewheel.js"> </script>
+    <script type="text/javascript" src="jscharts.js"></script>
+    <script type="text/javascript">
+       $(function() {
+          $('.sparklines').sparkline('html', { enableTagOptions: true , colorMap: ["red", "black", "grey"],barSpacing: 2,chartRangeMin:0, barWidth:20});
+         $('.piecharts').sparkline('html',{ enableTagOptions: true, sliceColors:["blue" ,"red","yellow"]})   
+      
+      
+        //  $('.piecharts').sparkline('html',{ enableTagOptions: true })
+      
+      });
+    </script>
+    <script type="text/javascript">
+     $(document).ready(function() {
+	      $("a#alert_type").fancybox({
+	         'hideOnContentClick': true
+	        });
+	       
+	       $("a#artifact_count").fancybox({
+            'hideOnContentClick': true
+	        });  
+       })
+        
+
+    </script>
+     <link rel="stylesheet" href="jquery.fancybox.css" type="text/css" media="screen" />
+ </head>
+<body>
+  <p>   
+    <b>Bar Chart:-</b> <a id="alert_type" href="#unique"><span class="sparklines" sparkType="bar">7,3,10</span></a>
+  </p>
+   <div style="display:none">
+       <div id="unique"> </div>
+    </div>
+  <script type="text/javascript" language="javascript">
+
+         var myData = new Array(['ML', 7], ['BL', 3], ['SA', 10]);
+         var myChart = new JSChart('unique', 'bar');
+         var myColors = new Array('#f00', '#000', '#666');
+         myChart.setDataArray(myData);
+         myChart.colorizeBars(myColors);
+         myChart.setBackgroundColor('#efe');
+         myChart.setAxisNameX('Alert');
+         myChart.setAxisNameY('Alert Count');
+         myChart.draw();
+
+</script>
+   <p>   
+    <b>PIE Chart 2:-</b> <a id="artifact_count" href="#artifact"><span class="piecharts" sparkType="pie">1,2,2</span></a>
+  </p>
+   <p>   
+    <b>PIE Chart:-</b> <a id="artifact_count" href="#artifact"><span class="piecharts" sparkType="pie" >1,2,1</span></a>
+  </p>
+  
+    <div style="display:none">
+       <div id="artifact"> </div>
+    </div>
+    <script type="text/javascript" language="javascript">
+
+         var myData = new Array(['PDF', 33], ['JS', 33],['HTML',33]);
+         var myChart = new JSChart('artifact', 'pie');
+         var myColors = new Array('#00f', '#f00','#fce94f');
+         myChart.setDataArray(myData);
+         myChart.colorizePie(myColors);
+         myChart.setBackgroundColor('#efe');
+         myChart.draw();
+
+</script>
+</body> 
